@@ -1,0 +1,77 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Feb 18 22:28 2019
+
+				Addition
+
+		|time|ctrl|   A   |   B    |   R    |N|O|Z|
+                   0   00 fffff000 ffffffff ffffefff 1 0 0
+
+                   5   00 ffffffff 000f00f0 000f00ef 0 0 0
+
+                  10   00 67676767 12431243 79aa79aa 0 0 0
+
+                  15   00 aaaaaaaa efabcd19 9a5677c3 1 0 0
+
+                  20   00 ffffffff 00000001 00000000 0 0 1
+
+                  25   00 ffffffff ffffffff fffffffe 1 0 0
+
+                  30   00 fffffffc fffffffc fffffff8 1 0 0
+
+                  35   00 ffff0000 00001342 ffff1342 1 0 0
+
+                  40   00 01234567 00080808 012b4d6f 0 0 0
+
+
+				Subtraction
+
+		|time|ctrl|   A   |   B    |   R    |N|O|Z|
+                  45   01 fffff000 ffffffff fffff001 1 0 0
+
+                  50   01 ffffffff 000f00f0 fff0ff0f 1 0 0
+
+                  55   01 67676767 12431243 55245524 0 0 0
+
+                  60   01 aaaaaaaa efabcd19 bafedd91 1 0 0
+
+                  65   01 ffffffff 00000001 fffffffe 1 0 0
+
+                  70   01 ffffffff ffffffff 00000000 0 0 1
+
+                  75   01 fffffffc fffffffc 00000000 0 0 1
+
+                  80   01 ffff0000 00001342 fffeecbe 1 0 0
+
+                  85   01 01234567 00080808 011b3d5f 0 0 0
+
+
+				Bitwise And
+
+		|time|ctrl|   A   |   B    |   R    |N|O|Z|
+                  90   10 ffffffff 0a0ab0b0 0a0ab0b0 0 0 0
+
+                  95   10 abcd4545 12383588 02080500 0 0 0
+
+                 100   10 f0f0f0f0 cfcfcfcf c0c0c0c0 1 0 0
+
+                 105   10 00000000 11000001 00000000 0 0 1
+
+
+				Bitwise Or
+
+		|time|ctrl|   A   |   B    |   R    |N|O|Z|
+                 110   11 ffffffff 0a0ab0b0 ffffffff 1 0 0
+
+                 115   11 abcd4545 12383588 bbfd75cd 1 0 0
+
+                 120   11 f0f0f0f0 cfcfcfcf ffffffff 1 0 0
+
+                 125   11 00000000 11000001 11000001 0 0 0
+
+$finish called from file "alu_fixture.v", line 67.
+$finish at simulation time                  135
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 135
+CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
+Mon Feb 18 22:28:41 2019
