@@ -1,0 +1,29 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Feb  4 15:31 2019
+VCD+ Writer I-2014.03-2 Copyright (c) 1991-2014 by Synopsys Inc.
+                   0 Count Q = 0000 Clear= 1
+                  34 Count Q = 0000 Clear= 0
+                  40 Count Q = 0001 Clear= 0
+                  60 Count Q = 0010 Clear= 0
+                  80 Count Q = 0011 Clear= 0
+                 100 Count Q = 0100 Clear= 0
+                 120 Count Q = 0101 Clear= 0
+                 140 Count Q = 0110 Clear= 0
+                 160 Count Q = 0111 Clear= 0
+                 180 Count Q = 1000 Clear= 0
+                 200 Count Q = 1001 Clear= 0
+                 220 Count Q = 1010 Clear= 0
+                 234 Count Q = 0000 Clear= 1
+                 284 Count Q = 0000 Clear= 0
+                 300 Count Q = 0001 Clear= 0
+                 320 Count Q = 0010 Clear= 0
+                 340 Count Q = 0011 Clear= 0
+                 360 Count Q = 0100 Clear= 0
+                 380 Count Q = 0101 Clear= 0
+$finish called from file "counter_fixture.v", line 38.
+$finish at simulation time                  400
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 400
+CPU Time:      0.350 seconds;       Data structure size:   0.0Mb
+Mon Feb  4 15:31:25 2019
