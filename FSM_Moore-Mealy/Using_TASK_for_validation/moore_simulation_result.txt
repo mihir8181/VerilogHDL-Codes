@@ -1,0 +1,45 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Mar  4 00:54 2019
+
+
+---------------------------------
+Mihir Mahajan
+EEE 273 Assignment 3
+Moore '101' Sequence Detector using TASk
+---------------------------------
+TIME	RST  current_state  x  z
+
+   0 	0 		0   0  0
+   5 	1 		0   0  0
+ 130 	1 		0   1  0
+ 150 	1 		1   0  0
+ 170 	1 		2   1  0
+ 190 	1 		3   0  1
+ 210 	1 		2   1  0
+ 230 	1 		3   0  1
+ 250 	1 		2   1  0
+ 260 	0 		0   1  0
+ 265 	1 		0   1  0
+ 270 	1 		1   1  0
+ 310 	1 		1   0  0
+ 330 	1 		2   0  0
+ 350 	1 		0   1  0
+ 370 	1 		1   1  0
+ 390 	1 		1   0  0
+ 410 	1 		2   1  0
+ 430 	1 		3   0  1
+ 450 	1 		2   0  0
+ 470 	1 		0   0  0
+ 490 	1 		0   1  0
+ 510 	1 		1   0  0
+ 530 	1 		2   1  0
+ 550 	1 		3   0  1
+ 570 	1 		2   1  0
+ 590 	1 		3   0  1
+$finish called from file "moore_seq_detect_fixture.v", line 167.
+$finish at simulation time                  600
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 600
+CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
+Mon Mar  4 00:54:37 2019
