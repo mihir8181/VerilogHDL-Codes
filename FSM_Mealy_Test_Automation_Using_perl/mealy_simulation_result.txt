@@ -1,0 +1,50 @@
+Chronologic VCS simulator copyright 1991-2014
+Contains Synopsys proprietary information.
+Compiler version I-2014.03-2; Runtime version I-2014.03-2;  Mar 10 01:31 2019
+
+
+---------------------------------
+Mihir Mahajan
+EEE 273 Assignment 3
+Mealy '101' Sequence Detector using TASK
+---------------------------------
+TIME	RST  current_state  x z z_reg
+
+  20	 0	 0	    0 0 0	 Test = Pass 
+  40	 1	 0	    0 0 0	 Test = Pass 
+  60	 1	 0	    1 0 0	 Test = Pass 
+  80	 1	 1	    0 0 0	 Test = Pass 
+ 100	 1	 2	    1 1 1	 Test = Pass 
+ 120	 1	 1	    0 0 0	 Test = Pass 
+ 140	 1	 2	    1 1 1	 Test = Pass 
+ 160	 1	 1	    0 0 0	 Test = Pass 
+ 180	 1	 2	    1 1 1	 Test = Pass 
+ 200	 1	 1	    1 0 0	 Test = Pass 
+ 220	 1	 1	    1 0 0	 Test = Pass 
+ 240	 1	 1	    1 0 0	 Test = Pass 
+ 260	 1	 1	    0 0 0	 Test = Pass 
+ 280	 1	 2	    1 1 1	 Test = Pass 
+ 300	 1	 1	    0 0 0	 Test = Pass 
+ 320	 0	 0	    1 0 0	 Test = Pass 
+ 340	 1	 1	    0 0 0	 Test = Pass 
+ 360	 1	 2	    0 0 0	 Test = Pass 
+ 380	 1	 0	    1 0 0	 Test = Pass 
+ 400	 1	 1	    0 0 0	 Test = Pass 
+ 420	 1	 2	    0 0 0	 Test = Pass 
+ 440	 1	 0	    0 0 0	 Test = Pass 
+ 460	 1	 0	    1 0 0	 Test = Pass 
+ 480	 1	 1	    0 0 0	 Test = Pass 
+ 500	 1	 2	    1 1 1	 Test = Pass 
+ 520	 1	 1	    1 0 0	 Test = Pass 
+ 540	 1	 1	    0 0 0	 Test = Pass 
+ 560	 1	 2	    1 1 1	 Test = Pass 
+ 580	 1	 1	    0 0 0	 Test = Pass 
+ 600	 1	 2	    1 1 1	 Test = Pass 
+ 620	 1	 1	    1 0 0	 Test = Pass 
+ 640	 1	 1	    0 0 0	 Test = Pass 
+$finish called from file "mealy_seq_detect_fixture.v", line 96.
+$finish at simulation time                  650
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 650
+CPU Time:      0.340 seconds;       Data structure size:   0.0Mb
+Sun Mar 10 01:31:11 2019
