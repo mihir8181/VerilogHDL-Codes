@@ -1,6 +1,6 @@
 Model and validate a synthesizable  N-bit ALU capable of performing the following operations:    
 
-                 Control Lines           Operation              
+                 Control Lines.             Operation              
                         00                      Addition                       
                         01                      Subtract               
                         10                      Bitwise AND                    
