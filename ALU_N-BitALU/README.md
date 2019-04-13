@@ -1,6 +1,9 @@
+# N Bit ALU
+
 Model and validate a synthesizable  N-bit ALU capable of performing the following operations:    
 
-                 Control Lines.             Operation              
+                  Control Lines                Operations  
+                  
                         00                      Addition                       
                         01                      Subtract               
                         10                      Bitwise AND                    
@@ -20,7 +23,7 @@ Verify the functionality of a 32-bit version of the model Using simulation.
 This should be done by changing the width parameter during simulation.
 Use the following test vectors for the simulation results that you submit:
 
-                 Addition & subtraction
+                   Addition   &  subtraction
 
                  A = FFFFF000   B = FFFFFFFF
                  A = FFFFFFFF   B = 000F00F0
@@ -32,7 +35,7 @@ Use the following test vectors for the simulation results that you submit:
                  A = FFFF0000   B = 00001342
                  A = 01234567   B = 00080808
 
-                 bitwise AND , bitwise OR:
+                 bitwise AND ,    bitwise OR:
 
                  A = FFFFFFFF    B = 0A0AB0B0
                  A = ABCD4545    B = 12383588
