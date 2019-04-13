@@ -1,4 +1,4 @@
-#Counter
+# Counter
 
 This Counter folder includes the following files.
 
@@ -8,4 +8,4 @@ This Counter folder includes the following files.
 
 **DVE Simulation Result
 
-![picture alt](https://github.com/mihir8181/VerilogHDL-Codes/blob/master/Counter/dve_print.png "dve_print.png"
+![picture alt](https://github.com/mihir8181/VerilogHDL-Codes/blob/master/Counter/dve_print.png "dve_print.png")
