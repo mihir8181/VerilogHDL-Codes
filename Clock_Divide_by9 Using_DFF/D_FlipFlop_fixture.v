@@ -1,10 +1,10 @@
 // ----- D_FF TestBench --------
-module D_FF_fixture();
+`include "D_FlipFlop.v"
+module D_FlipFlop_fixture();
 reg d, clk, rst;
-wire q qbar;
-
+wire q, qbar;
 // Instantiation ------------------
-D_FF dff1 (.d(d), .clk(clk), .rst(rst), .q(q), qbar(qbar));
+D_FlipFlop dff1 (.d(d), .clk(clk), .rst(rst), .q(q), .qbar(qbar));
 
 initial
 begin

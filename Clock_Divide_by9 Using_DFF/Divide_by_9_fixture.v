@@ -1,23 +1,22 @@
+//-------------------------//
+//  Divide by 9 Testbench  //
+//------------------------//
 `timescale 1ns/1ps
 `include "Divide_by_9.v"
-`include "D_FF.v"
+`include "D_FlipFlop.v"
 module Divide_by_9_fixture();
-
-reg clk;
-reg rst;
+reg clk,rst;
 wire clk9;
 
 initial
-begin
 $vcdpluson;
-end
 
-Divide_by_9 DUT(.clk(clk), .rst(rst), .clk9(clk9));
+Divide_by_9 dut_1(.clk(clk), .rst(rst), .clk9(clk9));
 
 initial
 begin
-$display("Time \trst \tclk \tclk9\n");
-$monitor("%04t \t%b \t%b \t%b", $time, rst, clk, clk9);
+$display("Time \trst \tclk \tq0 \tq1 \tq2 \tq3 \tclk9\n");
+$monitor("%04t \t%b \t%b \t%b \t%b \t%b \t%b \t%b", $time, rst, clk, dut_1.q0, dut_1.q1, dut_1.q2, dut_1.q3, clk9);
 end
 
 initial
@@ -29,8 +28,7 @@ end
 initial
 begin
   rst=1;
-  #15
-  rst=0;
+  #5 rst=0;
 end
 
 initial
