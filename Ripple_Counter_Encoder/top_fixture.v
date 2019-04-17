@@ -19,7 +19,7 @@ module top_fixture;
    Ripple_counter my_ripple_counter(clk, q);
    Encoder my_encoder(q, ascii);
 
-   initial #28 $finish;
+   initial #28 $finish;   // total number of character including two spaces + 2 
 
    initial begin
       $display("Time  CLK   Q            Name");
