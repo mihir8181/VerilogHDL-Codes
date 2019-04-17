@@ -4,7 +4,7 @@ module Ripple_counter(CLK, Q);
 
    reg [0:13] Q;      // flipflops
 
-// try using = below instead and see what happens
+
    always @(CLK) begin
       Q[0] <= Q[13];   // at posedge clk event
       Q[1] <= Q[0];   // <= is concurrent transfer
