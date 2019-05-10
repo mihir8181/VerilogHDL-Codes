@@ -1,0 +1,105 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : fifo
+Version: I-2013.12-SP5-4
+Date   : Wed May  1 22:25:44 2019
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: TYPICAL   Library: saed90nm_typ
+Wire Load Model Mode: enclosed
+
+  Startpoint: write_uut/wbin_reg[3]
+              (rising edge-triggered flip-flop clocked by clk_in)
+  Endpoint: mem_uut/FIFO_reg[75][7]
+            (rising edge-triggered flip-flop clocked by clk_in)
+  Path Group: clk_in
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo               280000                saed90nm_typ
+  memory_datasize32_addrbits8_depth128
+                     280000                saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_in (rise edge)                                0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  write_uut/wbin_reg[3]/CLK (DFFARX1)                     0.00 #     0.00 r
+  write_uut/wbin_reg[3]/Q (DFFARX1)                       0.20       0.20 f
+  write_uut/wraddr[3] (WFSM_addrbits8_depth128)           0.00       0.20 f
+  mem_uut/wraddr[3] (memory_datasize32_addrbits8_depth128)
+                                                          0.00       0.20 f
+  mem_uut/U7651/ZN (INVX0)                                0.64       0.84 r
+  mem_uut/U7523/QN (NOR2X0)                               0.65       1.49 f
+  mem_uut/U4835/Q (AND2X4)                                0.51       2.00 f
+  mem_uut/U2033/Q (AO21X1)                                1.01       3.01 f
+  mem_uut/U8008/ZN (INVX0)                                0.88       3.89 r
+  mem_uut/U182/Q (AO22X1)                                 1.26       5.15 r
+  mem_uut/FIFO_reg[75][7]/D (DFFARX1)                     0.33       5.48 r
+  data arrival time                                                  5.48
+
+  clock clk_in (rise edge)                                1.00       1.00
+  clock network delay (ideal)                             0.00       1.00
+  mem_uut/FIFO_reg[75][7]/CLK (DFFARX1)                   0.00       1.00 r
+  library setup time                                     -0.09       0.91
+  data required time                                                 0.91
+  --------------------------------------------------------------------------
+  data required time                                                 0.91
+  data arrival time                                                 -5.48
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -4.57
+
+
+  Startpoint: read_uut/rbin_reg[0]
+              (rising edge-triggered flip-flop clocked by clk_out)
+  Endpoint: mem_uut/dataOut_reg[27]
+            (rising edge-triggered flip-flop clocked by clk_out)
+  Path Group: clk_out
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  fifo               280000                saed90nm_typ
+  memory_datasize32_addrbits8_depth128
+                     280000                saed90nm_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk_out (rise edge)                               0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  read_uut/rbin_reg[0]/CLK (DFFARX1)                      0.00       0.00 r
+  read_uut/rbin_reg[0]/Q (DFFARX1)                        0.18       0.18 r
+  read_uut/rdaddr[0] (RFSM_addrbits8_depth128)            0.00       0.18 r
+  mem_uut/rdaddr[0] (memory_datasize32_addrbits8_depth128)
+                                                          0.00       0.18 r
+  mem_uut/U4850/Z (DELLN1X2)                              0.72       0.89 r
+  mem_uut/U7378/Z (DELLN1X2)                              0.67       1.57 r
+  mem_uut/U5064/Z (DELLN1X2)                              0.80       2.36 r
+  mem_uut/U7147/Q (MUX41X1)                               2.53       4.90 r
+  mem_uut/U7150/Q (MUX41X1)                               0.58       5.48 r
+  mem_uut/U7166/Q (MUX41X1)                               0.56       6.04 r
+  mem_uut/U7188/Q (MUX21X1)                               0.62       6.65 r
+  mem_uut/U4565/Q (AO22X1)                                0.48       7.13 r
+  mem_uut/dataOut_reg[27]/D (DFFASRX1)                    0.40       7.53 r
+  data arrival time                                                  7.53
+
+  clock clk_out (rise edge)                               2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  mem_uut/dataOut_reg[27]/CLK (DFFASRX1)                  0.00       2.00 r
+  library setup time                                     -0.09       1.91
+  data required time                                                 1.91
+  --------------------------------------------------------------------------
+  data required time                                                 1.91
+  data arrival time                                                 -7.53
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -5.62
+
+
+1

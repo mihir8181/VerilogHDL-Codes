@@ -1,0 +1,522 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Author" content="<username>"> <meta name="GENERATOR" content="urg/version [en] (platform name) [urg]">
+<title>Unified Coverage Report :: Module :: RFSM</title>
+<link type="text/css" rel="stylesheet" href=".urg.css">
+<script type="text/javascript" src=".sortable.js"></script></head>
+<body><center><a href="dashboard.html" ><b>dashboard</b></a> | <a href="hierarchy.html" ><b>hierarchy</b></a> | <a href="modlist.html" ><b>modlist</b></a> | groups | <a href="tests.html" ><b>tests</b></a> | asserts</center>
+<br>
+<div class=modhdr>
+<br clear=all>
+<span class=titlename>Module : <a href="modlist.html#tag_RFSM" >RFSM</a></span>
+<br clear=all>
+<br clear=all>
+<table align=left>
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td></tr><tr>
+<td class="s8 cl rt"> 89.27</td>
+<td class="s8 cl rt"><a href="mod5.html#Line" > 85.37</a></td>
+<td class="s8 cl rt"><a href="mod5.html#Cond" > 88.89</a></td>
+<td class="s8 cl rt"><a href="mod5.html#Toggle" > 82.81</a></td>
+<td class="s10 cl rt"><a href="mod5.html#FSM" >100.00</a></td>
+</tr></table><br clear=all>
+<span class=repname>Source File(s) : </span>
+<br clear=all>
+<a href="file:///gaia/class/cs2731/cs273118/EEE273/Project2/RFSM.v" >/gaia/class/cs2731/cs273118/EEE273/Project2/RFSM.v</a><br clear=all>
+<br clear=all>
+<span class=repname>Module self-instances :</span>
+<br clear=all>
+<table align=left class="sml">
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td><td class="alfsrt">NAME</td></tr><tr>
+<td class="s8 cl rt"> 89.27</td>
+<td class="s8 cl rt"><a href="mod5.html#Line" > 85.37</a></td>
+<td class="s8 cl rt"><a href="mod5.html#Cond" > 88.89</a></td>
+<td class="s8 cl rt"><a href="mod5.html#Toggle" > 82.81</a></td>
+<td class="s10 cl rt"><a href="mod5.html#FSM" >100.00</a></td>
+<td><a href="mod5.html#inst_tag_5" >fifo_fixture.topuut.read_uut</a></td>
+</tr></table></div>
+<br clear=all>
+<hr>
+<a name="Line"></a>
+Line Coverage for Module : <a href="mod5.html" >RFSM</a><br clear=all>
+<table class="rt">
+<col width="122">
+<col span="4" width="82">
+<tr><th><th>Line No.<th>Total<th>Covered<th>Percent
+<tr class="s8"><td class="lf">TOTAL<td><td>41<td>35<td>85.37
+<tr class="s7"><td class="lf">ALWAYS<td>25<td>25<td>19<td>76.00
+<tr class="s10"><td class="lf">ALWAYS<td>73<td>16<td>16<td>100.00
+</table>
+<pre class="code"><br clear=all>
+24                      begin
+25         1/1              if(!rst)
+26                           begin
+27         1/1                 current_state &lt;= RESET; // non- blocking procedural assignment
+28         1/1                 empty &lt;= 1;
+29         1/1                 rbin &lt;= 0;   
+30         1/1                 rdptr &lt;= 0;
+31         1/1                 rden &lt;= 0;
+32                            end    
+33                          else
+34                            begin
+35         1/1                  current_state &lt;= next_state;
+36         1/1                  case(next_state)
+37                                   RESET : begin
+38         1/1                                 rden &lt;= 0;
+39         1/1                                 empty &lt;= 1;
+40         1/1                                 rbin &lt;= 0;  
+41         1/1                                 rdptr &lt;= 0;
+42                                           end
+43                                   REMOVE: begin
+44         1/1                                 empty &lt;= empty_val;
+45         1/1                                 if(!empty)
+46                                             begin
+47         1/1                                 rden &lt;= 1;
+48         1/1                                 {rbin, rdptr} &lt;= {rbinnext, rgraynext};
+49                                             end
+50                                             else
+51                                             begin        
+52         <font color = "red">0/1     ==>                         rden &lt;= 0; </font>
+53         <font color = "red">0/1     ==>                         {rbin, rdptr} &lt;= {rbin, rdptr};</font>
+54                                             end
+55                                           end
+56                                   IDEAL : begin
+57         1/1                                 rden &lt;= 0;
+58         1/1                                 empty &lt;= empty_val;
+59         1/1                                 {rbin, rdptr} &lt;= {rbin, rdptr};
+60                                           end             
+61                                  default: begin 
+62         <font color = "red">0/1     ==>                        empty  &lt;= 1;</font>
+63         <font color = "red">0/1     ==>                        rbin   &lt;= 0;   </font>
+64         <font color = "red">0/1     ==>                        rdptr  &lt;= 0;</font>
+65         <font color = "red">0/1     ==>                        rden   &lt;= 0;</font>
+66                                           end
+67                              endcase
+68                            end   
+69                      end
+70                      
+71                      always@(*)
+72                      begin
+73         1/1            next_state = RESET;
+74         1/1            case (current_state)
+75                        RESET : begin
+76         1/1                    if (sync_flush)
+77         1/1                      next_state = RESET;  // blocking procedural assignment
+78                                else                      
+79         1/1                      next_state = IDEAL;          
+80                                end
+81                      
+82                        REMOVE : begin
+83         1/1                     if (sync_flush)
+84         1/1                        next_state = RESET;             
+85         1/1                     else if (remove &amp;&amp; !empty)
+86         1/1                         next_state = REMOVE; 
+87                                 else
+88         1/1                        next_state = IDEAL;    
+89                                 end
+90                      
+91                        IDEAL : begin
+92         1/1                     if (sync_flush)
+93         1/1                        next_state = RESET;             
+94         1/1                    else if (remove &amp;&amp; !empty)
+95         1/1                        next_state = REMOVE;
+96                                else
+97         1/1                        next_state = IDEAL;          
+98                                end
+99                      
+100        1/1              default: next_state = RESET;
+</pre>
+<br clear=all>
+Go to <a href="mod5.html" >top</a>
+<hr>
+<a name="Cond"></a>
+Cond Coverage for Module : <a href="mod5.html" >RFSM</a><br clear=all>
+<table class="rt">
+<col width="122">
+<col span="3" width="82">
+<tr><th><th>Total<th>Covered<th>Percent
+<tr class="s8"><td class="lf">Conditions<td>9<td>8<td>88.89
+<tr class="s8"><td class="lf">Logical<td>9<td>8<td>88.89
+<tr class="wht"><td class="lf">Non-Logical<td>0<td>0<td>
+<tr class="wht"><td class="lf">Event<td>0<td>0<td>
+</table>
+<br clear=all>
+<pre class="code"> LINE       21
+ EXPRESSION ((rgraynext == sync_wrptr) || (rbin[(addrbits - 1):0] &gt;= (depth[(addrbits - 1):0] - 1)))
+             ------------1------------    ----------------------------2----------------------------
+</pre>
+<table class="ct">
+<col span="2" width="40">
+<tr><th>-1-<th>-2-<th>Status
+<tr class="uGreen"><td>0<td>0<td class="lf">Covered
+<tr class="uRed"><td>0<td>1<td class="lf">Not Covered
+<tr class="uGreen"><td>1<td>0<td class="lf">Covered
+</table>
+<br clear=all>
+<pre class="code"> LINE       85
+ EXPRESSION (remove &amp;&amp; ((!empty)))
+             ---1--    -----2----
+</pre>
+<table class="ct">
+<col span="2" width="40">
+<tr><th>-1-<th>-2-<th>Status
+<tr class="uGreen"><td>0<td>1<td class="lf">Covered
+<tr class="uGreen"><td>1<td>0<td class="lf">Covered
+<tr class="uGreen"><td>1<td>1<td class="lf">Covered
+</table>
+<br clear=all>
+<pre class="code"> LINE       94
+ EXPRESSION (remove &amp;&amp; ((!empty)))
+             ---1--    -----2----
+</pre>
+<table class="ct">
+<col span="2" width="40">
+<tr><th>-1-<th>-2-<th>Status
+<tr class="uGreen"><td>0<td>1<td class="lf">Covered
+<tr class="uGreen"><td>1<td>0<td class="lf">Covered
+<tr class="uGreen"><td>1<td>1<td class="lf">Covered
+</table>
+<br clear=all>
+Go to <a href="mod5.html" >top</a>
+<hr>
+<a name="Toggle"></a>
+Toggle Coverage for Module : <a href="mod5.html" >RFSM</a><br clear=all>
+<table align=left>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Total</th><th nowrap width=80>Covered</th><th nowrap width=80>Percent</th></tr><tr class="s6">
+<td>Totals</td>
+<td class="rt">15</td>
+<td class="rt">9</td>
+<td class="rt">60.00 </td>
+</tr><tr class="s8">
+<td>Total Bits</td>
+<td class="rt">128</td>
+<td class="rt">106</td>
+<td class="rt">82.81 </td>
+</tr><tr class="s8">
+<td nowrap>Total Bits 0->1</td>
+<td class="rt">64</td>
+<td class="rt">53</td>
+<td class="rt">82.81 </td>
+</tr><tr class="s8">
+<td nowrap>Total Bits 1->0</td>
+<td class="rt">64</td>
+<td class="rt">53</td>
+<td class="rt">82.81 </td>
+</tr></table><br clear=all>
+<table align=left>
+<tr>
+<th nowrap width=120></th><th nowrap width=80></th><th nowrap width=80></th><th nowrap width=80></th></tr><tr class="s6">
+<td>Ports</td>
+<td class="rt">9</td>
+<td class="rt">6</td>
+<td class="rt">66.67 </td>
+</tr><tr class="s8">
+<td>Port Bits</td>
+<td class="rt">64</td>
+<td class="rt">54</td>
+<td class="rt">84.38 </td>
+</tr><tr class="s8">
+<td nowrap>Port Bits 0->1</td>
+<td class="rt">32</td>
+<td class="rt">27</td>
+<td class="rt">84.38 </td>
+</tr><tr class="s8">
+<td nowrap>Port Bits 1->0</td>
+<td class="rt">32</td>
+<td class="rt">27</td>
+<td class="rt">84.38 </td>
+</tr></table><br clear=all>
+<table align=left>
+<tr>
+<th nowrap width=120></th><th nowrap width=80></th><th nowrap width=80></th><th nowrap width=80></th></tr><tr class="s5">
+<td>Signals</td>
+<td class="rt">6</td>
+<td class="rt">3</td>
+<td class="rt">50.00 </td>
+</tr><tr class="s8">
+<td>Signal Bits</td>
+<td class="rt">64</td>
+<td class="rt">52</td>
+<td class="rt">81.25 </td>
+</tr><tr class="s8">
+<td nowrap>Signal Bits 0->1</td>
+<td class="rt">32</td>
+<td class="rt">26</td>
+<td class="rt">81.25 </td>
+</tr><tr class="s8">
+<td nowrap>Signal Bits 1->0</td>
+<td class="rt">32</td>
+<td class="rt">26</td>
+<td class="rt">81.25 </td>
+</tr></table><br clear=all>
+<table align=left>
+<caption><b>Port Details</b></caption>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Toggle</th><th nowrap width=80>Toggle 1->0</th><th nowrap width=80>Toggle 0->1</th><th nowrap width=80>Direction</th></tr><tr>
+<td>empty</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>rden</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>rdaddr[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>rdaddr[7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>rdptr[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>rdptr[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>sync_wrptr[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>sync_wrptr[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td>INPUT</td>
+</tr><tr>
+<td>remove</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>clk_out</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>rst</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>sync_flush</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr></table><br clear=all>
+<table align=left>
+<caption><b>Signal Details</b></caption>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Toggle</th><th nowrap width=80>Toggle 1->0</th><th nowrap width=80>Toggle 0->1</th></tr><tr>
+<td>current_state[1:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>next_state[1:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>rbin[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>rbin[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+</tr><tr>
+<td>rgraynext[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>rgraynext[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+</tr><tr>
+<td>rbinnext[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>rbinnext[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+</tr><tr>
+<td>empty_val</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr></table><br clear=all>
+<br clear=all>
+Go to <a href="mod5.html" >top</a>
+<hr>
+<a name="FSM"></a>
+FSM Coverage for Module : <a href="mod5.html" >RFSM</a><br clear=all>
+<table align=left>
+<caption><b>Summary for FSM :: current_state</b></caption>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Total</th><th nowrap width=80>Covered</th><th nowrap width=80>Percent</th></tr><tr class="s10">
+<td>States</td>
+<td class="rt">3</td>
+<td class="rt">3</td>
+<td class="rt">100.00</td>
+</tr><tr class="s10">
+<td>Transitions</td>
+<td class="rt">5</td>
+<td class="rt">5</td>
+<td class="rt">100.00</td>
+</tr><tr class="wht">
+<td>Sequences</td>
+<td class="rt">0</td>
+<td class="rt">0</td>
+<td></td>
+</tr></table><br clear=all>
+<b>State, Transition and Sequence Details for FSM :: current_state</b><hr>
+<table align=left>
+<tr>
+<th>states</th><th nowrap width=80>Covered</th></tr><tr class="uGreen">
+<td nowrap>RESET</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>REMOVE</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>IDEAL</td>
+<td>Covered</td>
+</tr></table><br clear=all>
+<table align=left>
+<tr>
+<th>transitions</th><th nowrap width=80>Covered</th></tr><tr class="uGreen">
+<td nowrap>RESET->IDEAL</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>REMOVE->RESET</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>REMOVE->IDEAL</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>IDEAL->RESET</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>IDEAL->REMOVE</td>
+<td>Covered</td>
+</tr></table><br clear=all>
+<table align=left class="sml">
+<tr>
+<th>sequences</th><th nowrap width=80>Covered</th></tr></table><br clear=all>
+<br clear=all>
+Go to <a href="mod5.html" >top</a>
+<hr>
+<a name="inst_tag_5"></a>
+<div class=modhdr>
+<br clear=all>
+<span class=titlename>Module Instance : <a href="hierarchy.html#tag_urg_inst_5" >fifo_fixture.topuut.read_uut</a></span>
+<br clear=all>
+<br clear=all>
+<br clear=all>
+<span class=repname>Instance :</span>
+<br clear=all>
+<table align=left>
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td></tr><tr>
+<td class="s8 cl rt"> 89.27</td>
+<td class="s8 cl rt"><a href="mod5.html#Line" > 85.37</a></td>
+<td class="s8 cl rt"><a href="mod5.html#Cond" > 88.89</a></td>
+<td class="s8 cl rt"><a href="mod5.html#Toggle" > 82.81</a></td>
+<td class="s10 cl rt"><a href="mod5.html#FSM" >100.00</a></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Instance's subtree :</span>
+<br clear=all>
+<table align=left>
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td></tr><tr>
+<td class="s8 cl rt"> 89.27</td>
+<td class="s8 cl rt"> 85.37</td>
+<td class="s8 cl rt"> 88.89</td>
+<td class="s8 cl rt"> 82.81</td>
+<td class="s10 cl rt">100.00</td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Module : </span>
+<br clear=all>
+<table align=left class="sml">
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td><td class="alfsrt">NAME</td></tr><tr>
+<td class="s8 cl rt"> 89.27</td>
+<td class="s8 cl rt"> 85.37</td>
+<td class="s8 cl rt"> 88.89</td>
+<td class="s8 cl rt"> 82.81</td>
+<td class="s10 cl rt">100.00</td>
+<td><a href="mod5.html" >RFSM</a></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Parent : </span>
+<br clear=all>
+<table align=left class="sml">
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td><td class="alfsrt">NAME</td></tr><tr>
+<td class="s9 cl rt"> 92.13</td>
+<td class="wht cl rt"></td>
+<td class="wht cl rt"></td>
+<td class="s9 cl rt"> 92.13</td>
+<td class="wht cl rt"></td>
+<td><a href="mod1.html#inst_tag_1" >topuut</a></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Subtrees :</span>
+<br clear=all>
+<br clear=all>
+<span class=inst>no children</span>
+</div>
+<hr>
+Since this is the module's only instance, the coverage report is the same as for the module.<br clear=all>
+<hr>
+<center><a href="dashboard.html" ><b>dashboard</b></a> | <a href="hierarchy.html" ><b>hierarchy</b></a> | <a href="modlist.html" ><b>modlist</b></a> | groups | <a href="tests.html" ><b>tests</b></a> | asserts</center>
+<br>
+<br clear=all>
+<br clear=all>
+<table align=center><tr><td class="s0 cl">0%
+<td class="s1 cl">10%
+<td class="s2 cl">20%
+<td class="s3 cl">30%
+<td class="s4 cl">40%
+<td class="s5 cl">50%
+<td class="s6 cl">60%
+<td class="s7 cl">70%
+<td class="s8 cl">80%
+<td class="s9 cl">90%
+<td class="s10 cl">100%</table></body>
+</html>

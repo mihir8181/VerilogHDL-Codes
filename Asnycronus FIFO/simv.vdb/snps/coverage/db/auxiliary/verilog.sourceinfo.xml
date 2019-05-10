@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE cov SYSTEM "ucdb_srcinfo.dtd">
+  <srcinfo name="/gaia/class/cs2731/cs273118/EEE273/Project2"  >
+    <ucapi_version  major_ver="13"  minor_ver="1"  patch_str="I-2014.03-2"  />
+      <fileinfo name="WFSM.v"  id="5"  />
+      <fileinfo name="write_sync.v"  id="3"  />
+      <fileinfo name="read_sync.v"  id="2"  />
+      <fileinfo name="RFSM.v"  id="6"  />
+      <fileinfo name="fifo_fixture.v"  id="0"  />
+      <fileinfo name="flush_sync.v"  id="4"  />
+      <fileinfo name="memory.v"  id="7"  />
+      <fileinfo name="fifo.v"  id="1"  />
+    </srcinfo>

@@ -1,0 +1,551 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Author" content="<username>"> <meta name="GENERATOR" content="urg/version [en] (platform name) [urg]">
+<title>Unified Coverage Report :: Module :: WFSM</title>
+<link type="text/css" rel="stylesheet" href=".urg.css">
+<script type="text/javascript" src=".sortable.js"></script></head>
+<body><center><a href="dashboard.html" ><b>dashboard</b></a> | <a href="hierarchy.html" ><b>hierarchy</b></a> | <a href="modlist.html" ><b>modlist</b></a> | groups | <a href="tests.html" ><b>tests</b></a> | asserts</center>
+<br>
+<div class=modhdr>
+<br clear=all>
+<span class=titlename>Module : <a href="modlist.html#tag_WFSM" >WFSM</a></span>
+<br clear=all>
+<br clear=all>
+<table align=left>
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td></tr><tr>
+<td class="s8 cl rt"> 89.10</td>
+<td class="s9 cl rt"><a href="mod6.html#Line" > 90.48</a></td>
+<td class="s8 cl rt"><a href="mod6.html#Cond" > 80.00</a></td>
+<td class="s8 cl rt"><a href="mod6.html#Toggle" > 85.94</a></td>
+<td class="s10 cl rt"><a href="mod6.html#FSM" >100.00</a></td>
+</tr></table><br clear=all>
+<span class=repname>Source File(s) : </span>
+<br clear=all>
+<a href="file:///gaia/class/cs2731/cs273118/EEE273/Project2/WFSM.v" >/gaia/class/cs2731/cs273118/EEE273/Project2/WFSM.v</a><br clear=all>
+<br clear=all>
+<span class=repname>Module self-instances :</span>
+<br clear=all>
+<table align=left class="sml">
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td><td class="alfsrt">NAME</td></tr><tr>
+<td class="s8 cl rt"> 89.10</td>
+<td class="s9 cl rt"><a href="mod6.html#Line" > 90.48</a></td>
+<td class="s8 cl rt"><a href="mod6.html#Cond" > 80.00</a></td>
+<td class="s8 cl rt"><a href="mod6.html#Toggle" > 85.94</a></td>
+<td class="s10 cl rt"><a href="mod6.html#FSM" >100.00</a></td>
+<td><a href="mod6.html#inst_tag_6" >fifo_fixture.topuut.write_uut</a></td>
+</tr></table></div>
+<br clear=all>
+<hr>
+<a name="Line"></a>
+Line Coverage for Module : <a href="mod6.html" >WFSM</a><br clear=all>
+<table class="rt">
+<col width="122">
+<col span="4" width="82">
+<tr><th><th>Line No.<th>Total<th>Covered<th>Percent
+<tr class="s9"><td class="lf">TOTAL<td><td>42<td>38<td>90.48
+<tr class="s8"><td class="lf">ALWAYS<td>27<td>24<td>20<td>83.33
+<tr class="s10"><td class="lf">ALWAYS<td>74<td>18<td>18<td>100.00
+</table>
+<pre class="code"><br clear=all>
+26                      begin
+27         1/1              if(!rst)
+28                           begin
+29         1/1                  current_state &lt;= RESET; // non- blocking procedural assignment
+30         1/1                  full &lt;= 1'b0;
+31         1/1                  wbin &lt;= 0;   
+32         1/1                  wrptr &lt;= 0;
+33         1/1                  wren &lt;= 0;  
+34                            end    
+35                          else
+36                            begin
+37         1/1                  current_state &lt;= next_state;
+38         1/1                  case(next_state)
+39                                   RESET : begin
+40         1/1                                 wren &lt;= 0;
+41         1/1                                 full  &lt;= 0;
+42         1/1                                 wbin &lt;= 0;  
+43         1/1                                 wrptr &lt;= 0; 
+44                                           end
+45                                   INSERT: begin
+46         1/1                                 full &lt;= full_val;
+47         1/1                                 if(!full_val)
+48                                             begin
+49         1/1                                 wren &lt;= 1;                
+50         1/1                                 {wbin, wrptr} &lt;= {wbinnext, wgraynext};
+51                                             end
+52                                             else
+53                                             begin
+54         1/1                                 wren &lt;= 0;
+55         1/1                                 {wbin, wrptr} &lt;= {wbin, wrptr};
+56                                             end
+57                                           end
+58                                   IDEAL : begin
+59         1/1                                 wren &lt;= 0;
+60         1/1                                 full &lt;= full_val;
+61                                           end             
+62                                  default: begin         
+63         <font color = "red">0/1     ==>                       full  &lt;= 1'b0;</font>
+64         <font color = "red">0/1     ==>                        wbin  &lt;= 0;   </font>
+65         <font color = "red">0/1     ==>                        wrptr &lt;= 0;</font>
+66         <font color = "red">0/1     ==>                        wren &lt;= 0;</font>
+67                                           end
+68                              endcase
+69                            end   
+70                      end
+71                      
+72                      always@(*)
+73                      begin
+74         1/1            next_state = RESET;
+75         1/1            case (current_state)
+76                        RESET : begin
+77         1/1                    if (flush)
+78         1/1                      next_state = RESET;  // blocking procedural assignment
+79         1/1                    else if (insert &amp;&amp; !full)     
+80         1/1                      next_state = INSERT;
+81                                else
+82         1/1                      next_state = IDEAL;   
+83                                end
+84                      
+85                        INSERT : begin
+86         1/1                     if (flush)
+87         1/1                        next_state = RESET; 
+88         1/1                     else if (insert &amp;&amp; !full)
+89         1/1                        next_state = INSERT;
+90                                 else
+91         1/1                        next_state = IDEAL;   
+92                                 end
+93                      
+94                        IDEAL : begin
+95         1/1                     if (flush)
+96         1/1                        next_state = RESET;  
+97         1/1                    else if (insert &amp;&amp; !full)
+98         1/1                        next_state = INSERT;
+99                                else
+100        1/1                        next_state = IDEAL;               
+101                               end
+102        1/1              default: next_state = RESET;  
+</pre>
+<br clear=all>
+Go to <a href="mod6.html" >top</a>
+<hr>
+<a name="Cond"></a>
+Cond Coverage for Module : <a href="mod6.html" >WFSM</a><br clear=all>
+<table class="rt">
+<col width="122">
+<col span="3" width="82">
+<tr><th><th>Total<th>Covered<th>Percent
+<tr class="s7"><td class="lf">Conditions<td>15<td>12<td>80.00
+<tr class="s7"><td class="lf">Logical<td>15<td>12<td>80.00
+<tr class="wht"><td class="lf">Non-Logical<td>0<td>0<td>
+<tr class="wht"><td class="lf">Event<td>0<td>0<td>
+</table>
+<br clear=all>
+<pre class="code"> LINE       21
+ EXPRESSION 
+ Number  Term
+      1  ((wgraynext[(addrbits - 1)] != sync_rdptr[(addrbits - 1)]) &amp;&amp; (wgraynext[(addrbits - 2):0] == sync_rdptr[(addrbits - 2):0])) || 
+      2  (wbin[(addrbits - 1):0] &gt;= (depth[(addrbits - 1):0] - 1)))
+</pre>
+<table class="ct">
+<col span="2" width="40">
+<tr><th>-1-<th>-2-<th>Status
+<tr class="uGreen"><td>0<td>0<td class="lf">Covered
+<tr class="uGreen"><td>0<td>1<td class="lf">Covered
+<tr class="uRed"><td>1<td>0<td class="lf">Not Covered
+</table>
+<br clear=all>
+<pre class="code"> LINE       21
+ SUB-EXPRESSION ((wgraynext[(addrbits - 1)] != sync_rdptr[(addrbits - 1)]) &amp;&amp; (wgraynext[(addrbits - 2):0] == sync_rdptr[(addrbits - 2):0]))
+                 ----------------------------1----------------------------    ------------------------------2------------------------------
+</pre>
+<table class="ct">
+<col span="2" width="40">
+<tr><th>-1-<th>-2-<th>Status
+<tr class="uGreen"><td>0<td>1<td class="lf">Covered
+<tr class="uGreen"><td>1<td>0<td class="lf">Covered
+<tr class="uRed"><td>1<td>1<td class="lf">Not Covered
+</table>
+<br clear=all>
+<pre class="code"> LINE       79
+ EXPRESSION (insert &amp;&amp; ((!full)))
+             ---1--    ----2----
+</pre>
+<table class="ct">
+<col span="2" width="40">
+<tr><th>-1-<th>-2-<th>Status
+<tr class="uGreen"><td>0<td>1<td class="lf">Covered
+<tr class="uRed"><td>1<td>0<td class="lf">Not Covered
+<tr class="uGreen"><td>1<td>1<td class="lf">Covered
+</table>
+<br clear=all>
+<pre class="code"> LINE       88
+ EXPRESSION (insert &amp;&amp; ((!full)))
+             ---1--    ----2----
+</pre>
+<table class="ct">
+<col span="2" width="40">
+<tr><th>-1-<th>-2-<th>Status
+<tr class="uGreen"><td>0<td>1<td class="lf">Covered
+<tr class="uGreen"><td>1<td>0<td class="lf">Covered
+<tr class="uGreen"><td>1<td>1<td class="lf">Covered
+</table>
+<br clear=all>
+<pre class="code"> LINE       97
+ EXPRESSION (insert &amp;&amp; ((!full)))
+             ---1--    ----2----
+</pre>
+<table class="ct">
+<col span="2" width="40">
+<tr><th>-1-<th>-2-<th>Status
+<tr class="uGreen"><td>0<td>1<td class="lf">Covered
+<tr class="uGreen"><td>1<td>0<td class="lf">Covered
+<tr class="uGreen"><td>1<td>1<td class="lf">Covered
+</table>
+<br clear=all>
+Go to <a href="mod6.html" >top</a>
+<hr>
+<a name="Toggle"></a>
+Toggle Coverage for Module : <a href="mod6.html" >WFSM</a><br clear=all>
+<table align=left>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Total</th><th nowrap width=80>Covered</th><th nowrap width=80>Percent</th></tr><tr class="s6">
+<td>Totals</td>
+<td class="rt">15</td>
+<td class="rt">9</td>
+<td class="rt">60.00 </td>
+</tr><tr class="s8">
+<td>Total Bits</td>
+<td class="rt">128</td>
+<td class="rt">110</td>
+<td class="rt">85.94 </td>
+</tr><tr class="s8">
+<td nowrap>Total Bits 0->1</td>
+<td class="rt">64</td>
+<td class="rt">55</td>
+<td class="rt">85.94 </td>
+</tr><tr class="s8">
+<td nowrap>Total Bits 1->0</td>
+<td class="rt">64</td>
+<td class="rt">55</td>
+<td class="rt">85.94 </td>
+</tr></table><br clear=all>
+<table align=left>
+<tr>
+<th nowrap width=120></th><th nowrap width=80></th><th nowrap width=80></th><th nowrap width=80></th></tr><tr class="s6">
+<td>Ports</td>
+<td class="rt">9</td>
+<td class="rt">6</td>
+<td class="rt">66.67 </td>
+</tr><tr class="s8">
+<td>Port Bits</td>
+<td class="rt">64</td>
+<td class="rt">54</td>
+<td class="rt">84.38 </td>
+</tr><tr class="s8">
+<td nowrap>Port Bits 0->1</td>
+<td class="rt">32</td>
+<td class="rt">27</td>
+<td class="rt">84.38 </td>
+</tr><tr class="s8">
+<td nowrap>Port Bits 1->0</td>
+<td class="rt">32</td>
+<td class="rt">27</td>
+<td class="rt">84.38 </td>
+</tr></table><br clear=all>
+<table align=left>
+<tr>
+<th nowrap width=120></th><th nowrap width=80></th><th nowrap width=80></th><th nowrap width=80></th></tr><tr class="s5">
+<td>Signals</td>
+<td class="rt">6</td>
+<td class="rt">3</td>
+<td class="rt">50.00 </td>
+</tr><tr class="s8">
+<td>Signal Bits</td>
+<td class="rt">64</td>
+<td class="rt">56</td>
+<td class="rt">87.50 </td>
+</tr><tr class="s8">
+<td nowrap>Signal Bits 0->1</td>
+<td class="rt">32</td>
+<td class="rt">28</td>
+<td class="rt">87.50 </td>
+</tr><tr class="s8">
+<td nowrap>Signal Bits 1->0</td>
+<td class="rt">32</td>
+<td class="rt">28</td>
+<td class="rt">87.50 </td>
+</tr></table><br clear=all>
+<table align=left>
+<caption><b>Port Details</b></caption>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Toggle</th><th nowrap width=80>Toggle 1->0</th><th nowrap width=80>Toggle 0->1</th><th nowrap width=80>Direction</th></tr><tr>
+<td>full</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>wren</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>wraddr[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>wraddr[7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>wrptr[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>wrptr[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>sync_rdptr[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>sync_rdptr[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td>INPUT</td>
+</tr><tr>
+<td>insert</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>flush</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>clk_in</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>rst</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr></table><br clear=all>
+<table align=left>
+<caption><b>Signal Details</b></caption>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Toggle</th><th nowrap width=80>Toggle 1->0</th><th nowrap width=80>Toggle 0->1</th></tr><tr>
+<td>current_state[1:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>next_state[1:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>wbin[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>wbin[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+</tr><tr>
+<td>wgraynext[7:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>wgraynext[8]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+</tr><tr>
+<td>wbinnext[7:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>wbinnext[8]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+</tr><tr>
+<td>full_val</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr></table><br clear=all>
+<br clear=all>
+Go to <a href="mod6.html" >top</a>
+<hr>
+<a name="FSM"></a>
+FSM Coverage for Module : <a href="mod6.html" >WFSM</a><br clear=all>
+<table align=left>
+<caption><b>Summary for FSM :: current_state</b></caption>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Total</th><th nowrap width=80>Covered</th><th nowrap width=80>Percent</th></tr><tr class="s10">
+<td>States</td>
+<td class="rt">3</td>
+<td class="rt">3</td>
+<td class="rt">100.00</td>
+</tr><tr class="s10">
+<td>Transitions</td>
+<td class="rt">6</td>
+<td class="rt">6</td>
+<td class="rt">100.00</td>
+</tr><tr class="wht">
+<td>Sequences</td>
+<td class="rt">0</td>
+<td class="rt">0</td>
+<td></td>
+</tr></table><br clear=all>
+<b>State, Transition and Sequence Details for FSM :: current_state</b><hr>
+<table align=left>
+<tr>
+<th>states</th><th nowrap width=80>Covered</th></tr><tr class="uGreen">
+<td nowrap>RESET</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>INSERT</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>IDEAL</td>
+<td>Covered</td>
+</tr></table><br clear=all>
+<table align=left>
+<tr>
+<th>transitions</th><th nowrap width=80>Covered</th></tr><tr class="uGreen">
+<td nowrap>RESET->INSERT</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>RESET->IDEAL</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>INSERT->RESET</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>INSERT->IDEAL</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>IDEAL->RESET</td>
+<td>Covered</td>
+</tr><tr class="uGreen">
+<td nowrap>IDEAL->INSERT</td>
+<td>Covered</td>
+</tr></table><br clear=all>
+<table align=left class="sml">
+<tr>
+<th>sequences</th><th nowrap width=80>Covered</th></tr></table><br clear=all>
+<br clear=all>
+Go to <a href="mod6.html" >top</a>
+<hr>
+<a name="inst_tag_6"></a>
+<div class=modhdr>
+<br clear=all>
+<span class=titlename>Module Instance : <a href="hierarchy.html#tag_urg_inst_6" >fifo_fixture.topuut.write_uut</a></span>
+<br clear=all>
+<br clear=all>
+<br clear=all>
+<span class=repname>Instance :</span>
+<br clear=all>
+<table align=left>
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td></tr><tr>
+<td class="s8 cl rt"> 89.10</td>
+<td class="s9 cl rt"><a href="mod6.html#Line" > 90.48</a></td>
+<td class="s8 cl rt"><a href="mod6.html#Cond" > 80.00</a></td>
+<td class="s8 cl rt"><a href="mod6.html#Toggle" > 85.94</a></td>
+<td class="s10 cl rt"><a href="mod6.html#FSM" >100.00</a></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Instance's subtree :</span>
+<br clear=all>
+<table align=left>
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td></tr><tr>
+<td class="s8 cl rt"> 89.10</td>
+<td class="s9 cl rt"> 90.48</td>
+<td class="s8 cl rt"> 80.00</td>
+<td class="s8 cl rt"> 85.94</td>
+<td class="s10 cl rt">100.00</td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Module : </span>
+<br clear=all>
+<table align=left class="sml">
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td><td class="alfsrt">NAME</td></tr><tr>
+<td class="s8 cl rt"> 89.10</td>
+<td class="s9 cl rt"> 90.48</td>
+<td class="s8 cl rt"> 80.00</td>
+<td class="s8 cl rt"> 85.94</td>
+<td class="s10 cl rt">100.00</td>
+<td><a href="mod6.html" >WFSM</a></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Parent : </span>
+<br clear=all>
+<table align=left class="sml">
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td><td class="alfsrt">NAME</td></tr><tr>
+<td class="s9 cl rt"> 92.13</td>
+<td class="wht cl rt"></td>
+<td class="wht cl rt"></td>
+<td class="s9 cl rt"> 92.13</td>
+<td class="wht cl rt"></td>
+<td><a href="mod1.html#inst_tag_1" >topuut</a></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Subtrees :</span>
+<br clear=all>
+<br clear=all>
+<span class=inst>no children</span>
+</div>
+<hr>
+Since this is the module's only instance, the coverage report is the same as for the module.<br clear=all>
+<hr>
+<center><a href="dashboard.html" ><b>dashboard</b></a> | <a href="hierarchy.html" ><b>hierarchy</b></a> | <a href="modlist.html" ><b>modlist</b></a> | groups | <a href="tests.html" ><b>tests</b></a> | asserts</center>
+<br>
+<br clear=all>
+<br clear=all>
+<table align=center><tr><td class="s0 cl">0%
+<td class="s1 cl">10%
+<td class="s2 cl">20%
+<td class="s3 cl">30%
+<td class="s4 cl">40%
+<td class="s5 cl">50%
+<td class="s6 cl">60%
+<td class="s7 cl">70%
+<td class="s8 cl">80%
+<td class="s9 cl">90%
+<td class="s10 cl">100%</table></body>
+</html>

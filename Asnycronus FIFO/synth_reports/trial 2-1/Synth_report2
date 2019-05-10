@@ -1,0 +1,32 @@
+ 
+****************************************
+Report : area
+Design : fifo
+Version: I-2013.12-SP5-4
+Date   : Wed May  1 22:38:35 2019
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'fifo' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    saed90nm_typ (File: /netdisk/tmp/saed/SAED90_EDK/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_typ.db)
+
+Number of ports:                           72
+Number of nets:                           127
+Number of cells:                            6
+Number of combinational cells:              0
+Number of sequential cells:                 0
+Number of macros/black boxes:               0
+Number of buf/inv:                          0
+Number of references:                       6
+
+Combinational area:             112766.054866
+Buf/Inv area:                    25544.908693
+Noncombinational area:          135797.762199
+Macro/Black Box area:                0.000000
+Net Interconnect area:           28360.394499
+
+Total cell area:                248563.817066
+Total area:                     276924.211565
+1

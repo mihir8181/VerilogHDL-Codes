@@ -1,0 +1,286 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Author" content="<username>"> <meta name="GENERATOR" content="urg/version [en] (platform name) [urg]">
+<title>Unified Coverage Report :: Module :: read_sync</title>
+<link type="text/css" rel="stylesheet" href=".urg.css">
+<script type="text/javascript" src=".sortable.js"></script></head>
+<body><center><a href="dashboard.html" ><b>dashboard</b></a> | <a href="hierarchy.html" ><b>hierarchy</b></a> | <a href="modlist.html" ><b>modlist</b></a> | groups | <a href="tests.html" ><b>tests</b></a> | asserts</center>
+<br>
+<div class=modhdr>
+<br clear=all>
+<span class=titlename>Module : <a href="modlist.html#tag_read_sync" >read_sync</a></span>
+<br clear=all>
+<br clear=all>
+<table align=left>
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td></tr><tr>
+<td class="s9 cl rt"> 90.00</td>
+<td class="s10 cl rt"><a href="mod3.html#Line" >100.00</a></td>
+<td class="wht cl rt"></td>
+<td class="s8 cl rt"><a href="mod3.html#Toggle" > 80.00</a></td>
+<td class="wht cl rt"></td>
+</tr></table><br clear=all>
+<span class=repname>Source File(s) : </span>
+<br clear=all>
+<a href="file:///gaia/class/cs2731/cs273118/EEE273/Project2/read_sync.v" >/gaia/class/cs2731/cs273118/EEE273/Project2/read_sync.v</a><br clear=all>
+<br clear=all>
+<span class=repname>Module self-instances :</span>
+<br clear=all>
+<table align=left class="sml">
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td><td class="alfsrt">NAME</td></tr><tr>
+<td class="s9 cl rt"> 90.00</td>
+<td class="s10 cl rt"><a href="mod3.html#Line" >100.00</a></td>
+<td class="wht cl rt"></td>
+<td class="s8 cl rt"><a href="mod3.html#Toggle" > 80.00</a></td>
+<td class="wht cl rt"></td>
+<td><a href="mod3.html#inst_tag_3" >fifo_fixture.topuut.r2w_uut</a></td>
+</tr></table></div>
+<br clear=all>
+<hr>
+<a name="Line"></a>
+Line Coverage for Module : <a href="mod3.html" >read_sync</a><br clear=all>
+<table class="rt">
+<col width="122">
+<col span="4" width="82">
+<tr><th><th>Line No.<th>Total<th>Covered<th>Percent
+<tr class="s10"><td class="lf">TOTAL<td><td>8<td>8<td>100.00
+<tr class="s10"><td class="lf">ALWAYS<td>11<td>8<td>8<td>100.00
+</table>
+<pre class="code"><br clear=all>
+10                      begin
+11         1/1           if(!rst)
+12                       begin
+13         1/1            r0 &lt;= 0;
+14         1/1            sync_rdptr &lt;= 0;
+15                        end
+16         1/1               else if(sync_flush) 
+17                           begin
+18         1/1                 r0 &lt;= 0;
+19         1/1                 sync_rdptr &lt;= 0;
+20                           end
+21                       else
+22                        begin
+23         1/1              r0 &lt;= rdptr;
+24         1/1              sync_rdptr &lt;= r0;
+</pre>
+<br clear=all>
+Go to <a href="mod3.html" >top</a>
+<hr>
+<a name="Toggle"></a>
+Toggle Coverage for Module : <a href="mod3.html" >read_sync</a><br clear=all>
+<table align=left>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Total</th><th nowrap width=80>Covered</th><th nowrap width=80>Percent</th></tr><tr class="s5">
+<td>Totals</td>
+<td class="rt">6</td>
+<td class="rt">3</td>
+<td class="rt">50.00 </td>
+</tr><tr class="s8">
+<td>Total Bits</td>
+<td class="rt">60</td>
+<td class="rt">48</td>
+<td class="rt">80.00 </td>
+</tr><tr class="s8">
+<td nowrap>Total Bits 0->1</td>
+<td class="rt">30</td>
+<td class="rt">24</td>
+<td class="rt">80.00 </td>
+</tr><tr class="s8">
+<td nowrap>Total Bits 1->0</td>
+<td class="rt">30</td>
+<td class="rt">24</td>
+<td class="rt">80.00 </td>
+</tr></table><br clear=all>
+<table align=left>
+<tr>
+<th nowrap width=120></th><th nowrap width=80></th><th nowrap width=80></th><th nowrap width=80></th></tr><tr class="s6">
+<td>Ports</td>
+<td class="rt">5</td>
+<td class="rt">3</td>
+<td class="rt">60.00 </td>
+</tr><tr class="s8">
+<td>Port Bits</td>
+<td class="rt">42</td>
+<td class="rt">34</td>
+<td class="rt">80.95 </td>
+</tr><tr class="s8">
+<td nowrap>Port Bits 0->1</td>
+<td class="rt">21</td>
+<td class="rt">17</td>
+<td class="rt">80.95 </td>
+</tr><tr class="s8">
+<td nowrap>Port Bits 1->0</td>
+<td class="rt">21</td>
+<td class="rt">17</td>
+<td class="rt">80.95 </td>
+</tr></table><br clear=all>
+<table align=left>
+<tr>
+<th nowrap width=120></th><th nowrap width=80></th><th nowrap width=80></th><th nowrap width=80></th></tr><tr class="s0">
+<td>Signals</td>
+<td class="rt">1</td>
+<td class="rt">0</td>
+<td class="rt">0.00  </td>
+</tr><tr class="s7">
+<td>Signal Bits</td>
+<td class="rt">18</td>
+<td class="rt">14</td>
+<td class="rt">77.78 </td>
+</tr><tr class="s7">
+<td nowrap>Signal Bits 0->1</td>
+<td class="rt">9</td>
+<td class="rt">7</td>
+<td class="rt">77.78 </td>
+</tr><tr class="s7">
+<td nowrap>Signal Bits 1->0</td>
+<td class="rt">9</td>
+<td class="rt">7</td>
+<td class="rt">77.78 </td>
+</tr></table><br clear=all>
+<table align=left>
+<caption><b>Port Details</b></caption>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Toggle</th><th nowrap width=80>Toggle 1->0</th><th nowrap width=80>Toggle 0->1</th><th nowrap width=80>Direction</th></tr><tr>
+<td>clk_out</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>rst</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>sync_flush</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>rdptr[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>INPUT</td>
+</tr><tr>
+<td>rdptr[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td>INPUT</td>
+</tr><tr>
+<td>sync_rdptr[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td>OUTPUT</td>
+</tr><tr>
+<td>sync_rdptr[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td>OUTPUT</td>
+</tr></table><br clear=all>
+<table align=left>
+<caption><b>Signal Details</b></caption>
+<tr>
+<th nowrap width=120></th><th nowrap width=80>Toggle</th><th nowrap width=80>Toggle 1->0</th><th nowrap width=80>Toggle 0->1</th></tr><tr>
+<td>r0[6:0]</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+<td class="s9 cl">Yes</td>
+</tr><tr>
+<td>r0[8:7]</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+<td class="s3 cl">No</td>
+</tr></table><br clear=all>
+<br clear=all>
+Go to <a href="mod3.html" >top</a>
+<hr>
+<a name="inst_tag_3"></a>
+<div class=modhdr>
+<br clear=all>
+<span class=titlename>Module Instance : <a href="hierarchy.html#tag_urg_inst_3" >fifo_fixture.topuut.r2w_uut</a></span>
+<br clear=all>
+<br clear=all>
+<br clear=all>
+<span class=repname>Instance :</span>
+<br clear=all>
+<table align=left>
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td></tr><tr>
+<td class="s9 cl rt"> 90.00</td>
+<td class="s10 cl rt"><a href="mod3.html#Line" >100.00</a></td>
+<td class="wht cl rt"></td>
+<td class="s8 cl rt"><a href="mod3.html#Toggle" > 80.00</a></td>
+<td class="wht cl rt"></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Instance's subtree :</span>
+<br clear=all>
+<table align=left>
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td></tr><tr>
+<td class="s9 cl rt"> 90.00</td>
+<td class="s10 cl rt">100.00</td>
+<td class="wht cl rt"></td>
+<td class="s8 cl rt"> 80.00</td>
+<td class="wht cl rt"></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Module : </span>
+<br clear=all>
+<table align=left class="sml">
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td><td class="alfsrt">NAME</td></tr><tr>
+<td class="s9 cl rt"> 90.00</td>
+<td class="s10 cl rt">100.00</td>
+<td class="wht cl rt"></td>
+<td class="s8 cl rt"> 80.00</td>
+<td class="wht cl rt"></td>
+<td><a href="mod3.html" >read_sync</a></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Parent : </span>
+<br clear=all>
+<table align=left class="sml">
+<tr class="sortablehead">
+<td>SCORE</td><td>LINE</td><td>COND</td><td>TOGGLE</td><td>FSM</td><td class="alfsrt">NAME</td></tr><tr>
+<td class="s9 cl rt"> 92.13</td>
+<td class="wht cl rt"></td>
+<td class="wht cl rt"></td>
+<td class="s9 cl rt"> 92.13</td>
+<td class="wht cl rt"></td>
+<td><a href="mod1.html#inst_tag_1" >topuut</a></td>
+</tr></table><br clear=all>
+<br clear=all>
+<span class=repname>Subtrees :</span>
+<br clear=all>
+<br clear=all>
+<span class=inst>no children</span>
+</div>
+<hr>
+Since this is the module's only instance, the coverage report is the same as for the module.<br clear=all>
+<hr>
+<center><a href="dashboard.html" ><b>dashboard</b></a> | <a href="hierarchy.html" ><b>hierarchy</b></a> | <a href="modlist.html" ><b>modlist</b></a> | groups | <a href="tests.html" ><b>tests</b></a> | asserts</center>
+<br>
+<br clear=all>
+<br clear=all>
+<table align=center><tr><td class="s0 cl">0%
+<td class="s1 cl">10%
+<td class="s2 cl">20%
+<td class="s3 cl">30%
+<td class="s4 cl">40%
+<td class="s5 cl">50%
+<td class="s6 cl">60%
+<td class="s7 cl">70%
+<td class="s8 cl">80%
+<td class="s9 cl">90%
+<td class="s10 cl">100%</table></body>
+</html>

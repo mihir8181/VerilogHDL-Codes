@@ -1,0 +1,92 @@
+0 
+23
++itf+/software/synopsys14/vcs/linux/lib/vcsdp.tab
++vcsd
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/software/synopsys14/vcs/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mldflags=-m32
+-Mobjects= /software/synopsys14/vcs/linux/lib/libvirsim.so /software/synopsys14/vcs/linux/lib/librterrorinf.so /software/synopsys14/vcs/linux/lib/libsnpsmalloc.so
+-Mout=simv
+-Msaverestoreobj=/software/synopsys14/vcs/linux/lib/vcs_save_restore_new.o
+-Msyslibs=/software/synopsys14/vcs/linux/lib/ctype-stubs_32.a -ldl -lm
+-Mvcsaceobjs=
+-cm
+-gen_obj
+-picarchive
+-pp_used
+/software/synopsys14/vcs/linux/bin/vcs1
+fifo_fixture.v
+fsm+line+tgl+cond
+48
+sysc_uni_pwd=/gaia/class/cs2731/cs273118/EEE273/Project2
+X_COLORMAP_DEFAULT=0
+X_COLORMAP_BASE=128
+XDBGJTAGWAITTIME=20
+XAPPLRESDIR=/usr/pkg/X11R5/lib/app-defaults
+WWW_HOME=http://www.csus.edu
+VMR_MODE_FLAG=32
+VENDOR=intel
+VCS_MX_HOME_INTERNAL=1
+VCS_LICENSE_EXPIRE_WARNING=1
+VCS_HOME=/software/synopsys14/vcs
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH_OVERRIDE=linux
+VCS_ARCH=linux
+VCS_AMD_PURE32=1
+UNAME=/bin/uname
+TOOL_HOME=/software/synopsys14/vcs/linux
+SYNOPSYS_SYN=/software/synopsys14/syn/linux/syn
+SYNOPSYS_SIM=/software/synopsys14/vcs
+SYNOPSYS=/software/synopsys14/syn/linux
+STATES_LICENSE_PATH=/usr/pkg/states/bin
+SSH_TTY=/dev/pts/18
+SSH_CONNECTION=130.86.20.37 62106 130.86.67.160 22
+SSH_CLIENT=130.86.20.37 62106 22
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+SNPSLMD_LICENSE_FILE=7241@titan.ecs.csus.edu:/software/synopsys14/vcs/flexlm//license.dat
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+REMOTEHOST=vpn-stu-020-037.sacvpn.csus.edu
+QTLIB=/usr/lib/qt-3.3/lib
+QTINC=/usr/lib/qt-3.3/include
+QTDIR=/usr/lib/qt-3.3
+P3_ENABLE_NFS_DB_ACCESS=yes
+OVA_UUM=0
+OSTYPE=linux
+MSC_LICENSE_FILE=51700@flex2.ecs.csus.edu
+MAGIC_COLOR=16bit
+LINK_TIMEOUT=3
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+LAI_LIB=/usr/pkg/smartmodel
+JAVA_HOME=/usr/pkg/java
+HOSTTYPE=i386-linux
+G_BROKEN_FILENAMES=1
+GROUP=cs2731
+CVS_RSH=ssh
+CDS_LIC_FILE=51700@flex2.ecs.csus.edu
+0
+10
+1556772192 memory.v
+1556772192 RFSM.v
+1556772192 WFSM.v
+1556772192 flush_sync.v
+1556770056 write_sync.v
+1556772192 read_sync.v
+1556772192 fifo.v
+1556770056 fifo_fixture.v
+1400211315 /software/synopsys14/vcs/include/cm_vcsd.tab
+1400211372 /software/synopsys14/vcs/linux/lib/vcsdp.tab
+4
+0 
+1400212016 /software/synopsys14/vcs/linux/lib/libvirsim.so
+1400211768 /software/synopsys14/vcs/linux/lib/librterrorinf.so
+1400211645 /software/synopsys14/vcs/linux/lib/libsnpsmalloc.so
+1556776260 simv.daidir

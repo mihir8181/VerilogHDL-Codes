@@ -1,0 +1,6 @@
+fifo_fixture.topuut.read_uut.REMOVE1
+fifo_fixture.topuut.read_uut.RESET0
+fifo_fixture.topuut.read_uut.IDEAL2
+fifo_fixture.topuut.write_uut.RESET0
+fifo_fixture.topuut.write_uut.INSERT1
+fifo_fixture.topuut.write_uut.IDEAL2

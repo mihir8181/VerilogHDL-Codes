@@ -1,0 +1,54 @@
+=======================DVE Context and Call Stack=========================
+Command line: /software/synopsys14/vcs/gui/dve/linux/bin/dve.exe
+
+--- Stack trace follows:
+[New LWP 10297]
+[Thread debugging using libthread_db enabled]
+0xb77e4424 in __kernel_vsyscall ()
+
+Thread 2 (Thread 0xb64c2b70 (LWP 10297)):
+#0  0xb77e4424 in __kernel_vsyscall ()
+#1  0x0075743c in pthread_cond_wait@@GLIBC_2.3.2 () from /lib/libpthread.so.0
+#2  0x009e6725 in ?? () from /usr/lib/libX11.so.6
+#3  0x009e6091 in ?? () from /usr/lib/libX11.so.6
+#4  0x009e6870 in ?? () from /usr/lib/libX11.so.6
+#5  0x009db6a6 in XFreeCursor () from /usr/lib/libX11.so.6
+#6  0x0a3bec26 in QCursorData::~QCursorData() ()
+#7  0x0a3bf0db in QCursor::~QCursor() ()
+#8  0x0a3bf10b in ?? ()
+#9  0x005e1e2f in exit () from /lib/libc.so.6
+#10 0x0a3a8e9e in ?? ()
+#11 0x009faeb7 in _XIOError () from /usr/lib/libX11.so.6
+#12 0x009f9aff in _XEventsQueued () from /usr/lib/libX11.so.6
+#13 0x009d41b2 in XCheckTypedEvent () from /usr/lib/libX11.so.6
+#14 0x08b8dfc7 in ag::dveXThread::run() ()
+#15 0x0a3fd163 in QThreadInstance::start(void*) ()
+#16 0x00753bc9 in start_thread () from /lib/libpthread.so.0
+#17 0x0069711e in clone () from /lib/libc.so.6
+
+Thread 1 (Thread 0xb65de750 (LWP 10245)):
+#0  0xb77e4424 in __kernel_vsyscall ()
+#1  0x0065569b in waitpid () from /lib/libc.so.6
+#2  0x005eebe3 in do_system () from /lib/libc.so.6
+#3  0x005eef72 in system () from /lib/libc.so.6
+#4  0x0075b9ed in system () from /lib/libpthread.so.0
+#5  0xb759370b in SNPSle_10ee25eff68cd8461c9146fa1d0b35e87067f3c8015b313e639d2928478c79b3f673f99203bcf8be64600612100082236bffb2007f1e0ef9 () from /software/synopsys14/vcs/linux/lib/liberrorinf.so
+#6  0xb7593d39 in SNPSle_10ee25eff68cd8461c9146fa1d0b35e87067f3c8015b313e81c34e9ac4c8988ef4a6e067b3aa9271e9f15440f9e8f69ebc77e2fd65860faa () from /software/synopsys14/vcs/linux/lib/liberrorinf.so
+#7  0xb75949c7 in SNPSle_10ee25eff68cd8461c9146fa1d0b35e87067f3c8015b313efba706aab251478fa49e66610e453774633a6c152e7ef778f2202cda681f3d4e () from /software/synopsys14/vcs/linux/lib/liberrorinf.so
+#8  0xb758e05d in SNPSle_d35ca1ff70d465c2b9b1a72eee90a506bd67bc4db6f8ee5099f1cf2dacc6a71a () from /software/synopsys14/vcs/linux/lib/liberrorinf.so
+#9  0x09a858a2 in ag::logErrorMessage(ag::errorType, QString const&, bool) ()
+#10 0x09a8620d in ?? ()
+#11 0x005e1e07 in exit () from /lib/libc.so.6
+#12 0x0a3a8e9e in ?? ()
+#13 0x009faeb7 in _XIOError () from /usr/lib/libX11.so.6
+#14 0x009f9aff in _XEventsQueued () from /usr/lib/libX11.so.6
+#15 0x009e9d48 in XPending () from /usr/lib/libX11.so.6
+#16 0x0a3c5145 in QEventLoop::processEvents(unsigned int) ()
+#17 0x08bd3549 in ag::ovaEventLoop::processEvents(unsigned int) ()
+#18 0x0a4148b8 in QEventLoop::enterLoop() ()
+#19 0x0a414844 in QEventLoop::exec() ()
+#20 0x08bd2f5f in run_cci_event_loop ()
+#21 0x08b8f16d in ag::ovaAppInst::enterEventLoop(int, char**) ()
+#22 0x088f4f89 in main ()
+No context available
+==========================================================================
